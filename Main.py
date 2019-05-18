@@ -29,7 +29,7 @@ while opcion != "6":
         nombre = input("Ingrese el nombre del paciente")
         contacto = input("Ingrese numero de telefono del paciente")
 
-        db.run("CREATE (p:Paciente {name:'"+nombre+"', contact:'"+contacto+"'})")
+        db.run("CREATE (p:Patient {name:'"+nombre+"', contact:'"+contacto+"'})")
 
         
     elif opcion == "3":
@@ -39,7 +39,7 @@ while opcion != "6":
         fecha = input("Ingrese la fecha de la visita (MM/DD/YY)")
         medicina = input("Ingrese el nombre de la medicina que le receto")
 
-        db.run("MATCH (p:Paciente),(d:Doctor),(m:Medicina) WHERE p.name = '"+nomPac+"' AND d.name = '"+nomDoc+"' AND m.name = '"+medicina+"' CREATE (p)-[r:VISITS{date: '"+ fecha +"'}]->(d) -> [r:PRESCRIBES] -> (m) -> [r: TAKES] -> (p) ")
+        db.run("MATCH (p:Patient),(d:Doctor),(m:Medicine) WHERE p.name = '"+nomPac+"' AND d.name = '"+nomDoc+"' AND m.name = '"+medicina+"' CREATE (p)-[r:VISITS{date: '"+ fecha +"'}]->(d) -> [r:PRESCRIBE] -> (m) -> [r: TAKES] -> (p) ")
         
         
         
@@ -69,9 +69,9 @@ while opcion != "6":
             
             p1 = input("Ingrese el nombre del primer paciente")
             p2 = input("Ingrese el nombre del segundo paciente")
-            db.run("MATCH (pac1:Paciente),(pac2:Paciente) WHERE pac1.name = '"+p1+"' AND pac2.name = '"+p2+"'CREATE (pac1)<-[r:KNOWS]->(pac2)")
+            db.run("MATCH (pac1:Patient),(pac2:Patient) WHERE pac1.name = '"+p1+"' AND pac2.name = '"+p2+"'CREATE (pac1)<-[r:KNOWS]->(pac2)")
 
         
 print("Gracias por utilizar el programa!")
         
-        
+      
