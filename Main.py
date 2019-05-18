@@ -5,11 +5,13 @@
 from py2neo import *
 from py2neo.ogm import *
 
-
+#Conecta a db
 db = Graph(password="1234")
 
 opcion = 0
 print("Bienvenido a Hoja de Trabajo 10 \n")
+
+#Se imprime menu con centinela
 while opcion != "7":
     opcion = input("Eliga una opcion: \n"
           "1. Ingresar un Doctor \n"
@@ -78,7 +80,7 @@ while opcion != "7":
 
 
     elif opcion == "6":
-        #Busca doctores por especialidad
+        #Recomendacion desde paciente
         nom = input("Ingrese el nombre paciente")
         esp = input("Ingrese la especialidad que busca")
         doctorVisitado = db.run("MACTH (p:Patient)-[r:VISITS]->(d:Doctor) WHERE p.name = '"+nom+"' AND d.specialty = '"+esp+"' return d.name")
