@@ -13,7 +13,7 @@ CREATE (diego:Patient { name: "Diego Juarez", phoneNumber: "87964489"})
 
 DOCTORES
 CREATE (docLuis:Doctor { name: "Luis Chavarria", phoneNumber: "98765555",speciality: "Gastroenterologo", })
-CREATE (docMario:Doctor { name: "Mario Herrera", phoneNumber: "76895489",speciality: "pediatroa", })
+CREATE (docMario:Doctor { name: "Mario Herrera", phoneNumber: "76895489",speciality: "pediatra", })
 CREATE (docLeonel:Doctor { name: "LeonelSierra", phoneNumber: "98985489",speciality: "oftalmologo", })
 CREATE (docDiego:Doctor { name: "Diego Gutierrez", phoneNumber: "66665489",speciality: "Urologo", })
 CREATE (docJavier:Doctor { name: "Javier Rivera", phoneNumber: "22265489",speciality: "Otorrinolaringologo", })
