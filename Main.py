@@ -3,17 +3,22 @@
 #Andrea Paniagua
 
 from py2neo import *
-#db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypasswordopcion = 0
+from py2neo.ogm import *
+
+
+db = Graph(password="1234")
+
 opcion = 0
 print("Bienvenido a Hoja de Trabajo 10 \n")
-while opcion != "6":
+while opcion != "7":
     opcion = input("Eliga una opcion: \n"
           "1. Ingresar un Doctor \n"
           "2. Ingresar un Paciente \n"
           "3. Ingresar una visita \n"
           "4. Consultar Doctores por especialidad \n"
           "5. Crear una relacion entre dos personas \n"
-          "6. Salir \n")
+          "6. Sugerencia simple desde paciente \n"
+          "7. Salir \n")
     
     if opcion == "1":
         #Crea un doctor con sus datos
@@ -71,7 +76,18 @@ while opcion != "6":
             p2 = input("Ingrese el nombre del segundo paciente")
             db.run("MATCH (pac1:Patient),(pac2:Patient) WHERE pac1.name = '"+p1+"' AND pac2.name = '"+p2+"'CREATE (pac1)<-[r:KNOWS]->(pac2)")
 
+
+    elif opcion == "6":
+        #Busca doctores por especialidad
+        nom = input("Ingrese el nombre paciente")
+        esp = input("Ingrese la especialidad que busca")
+        doctorVisitado = db.run("MACTH (p:Patient)-[r:VISITS]->(d:Doctor) WHERE p.name = '"+nom+"' AND d.specialty = '"+esp+"' return d.name")
         
+
+        
+        print("Has Visitado: \n"
+              "Nombre: " + nomb + "\n"
+              "Contacto: " + contac + "\n")
 print("Gracias por utilizar el programa!")
         
-      
+        
